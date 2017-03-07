@@ -22,6 +22,7 @@
  * THE SOFTWARE.
  */
 var should = require("should");
+should.config.checkProtoEql = false;
 var path = require("path");
 var webpack = require('webpack');
 var fs = require('fs');
@@ -74,11 +75,9 @@ exports.testBowerPlugin = function testBowerPlugin(webpackConfig, expectedModule
 
     var jsonStats = stats.toJson();
     jsonStats.errors.should.be.eql([]);
-
     var bundleScript = 'file:///' + path.join(webpackConfig.output.path, webpackConfig.output.filename);
     jsdom.env("<html></html>", [bundleScript], {}, function (errors, window) {
       should(errors).be.equal(null);
-
       var document = window.document;
 
       (function checkExpectedJs() {
@@ -114,7 +113,7 @@ exports.testBowerPlugin = function testBowerPlugin(webpackConfig, expectedModule
       window.close();
       done();
     });
-  })
+  });
 };
 
 /**
@@ -122,14 +121,20 @@ exports.testBowerPlugin = function testBowerPlugin(webpackConfig, expectedModule
  * @param {string} entryPoint name of the file, which acts as an entry point
  * @returns {{entry: *, output: {path: *, filename: string}, plugins: *[], debug: boolean}}
  */
+// XXX: searchResolveModulesDirectories is not implementated on this hacky branch
+var bowerWebpackPlugin = new BowerWebpackPlugin({ searchResolveModulesDirectories: false, modulesDirectories: ['./bower_components'] });
 exports.config = function config(entryPoint) {
   return {
     entry:   path.join(__dirname, "fixtures", entryPoint),
+    devtool: 'eval',
     output:  {
       path:     OUTPUT_DIR,
       filename: 'bundle' + entryPoint
     },
-    plugins: [new BowerWebpackPlugin()],
+    plugins: [bowerWebpackPlugin],
+    resolve: {
+      plugins: [bowerWebpackPlugin],
+    },
     module:  {
       loaders: [
         {
@@ -141,7 +146,7 @@ exports.config = function config(entryPoint) {
           loader: "file-loader?name=[name].[ext]"
         }
       ]
-    },
-    debug:   true
+    }
+    //debug:   true
   };
 };

@@ -4,17 +4,18 @@
   "description": "Use bower with webpack",
   "main": "lib/bower-plugin.js",
   "devDependencies": {
-    "css-loader": "^0.9.0",
-    "file-loader": "^0.8.1",
-    "jsdom": "^1.0.3",
-    "mocha": "1.21.x",
-    "rimraf": "^2.2.8",
-    "should": "4.0.x",
-    "style-loader": "^0.8.1",
-    "webpack": "^1.4.0"
+    "css-loader": "",
+    "enhanced-resolver": "",
+    "file-loader": "",
+    "jsdom": "",
+    "mocha": "",
+    "rimraf": "",
+    "should": "",
+    "style-loader": "",
+    "webpack": ""
   },
   "peerDependencies": {
-    "webpack": ">=1.4.0"
+    "webpack": ""
   },
   "scripts": {
     "test": "mocha --reporter spec",
@@ -40,7 +41,7 @@
   },
   "homepage": "https://github.com/lpiepiora/bower-webpack-plugin",
   "dependencies": {
-    "loader-utils": "^0.2.5",
-    "q": "^1.0.1"
+    "loader-utils": "",
+    "q": ""
   }
 }

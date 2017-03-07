@@ -75,7 +75,7 @@ testUtils.describe("resolving components being stored in custom module directori
       };
 
     cfg.resolve = {
-      modulesDirectories: undefined
+      modules: undefined
     };
 
     cfg.plugins = [

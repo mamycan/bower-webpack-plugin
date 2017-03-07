@@ -24,7 +24,7 @@
 var testUtils = require("./test-utils");
 var BowerWebpackPlugin = require("../");
 
-testUtils.describe("searching for components 'resolve.modulesDirectories'", function () {
+testUtils.describe("searching for components 'resolve.modules'", function () {
   var config = testUtils.config,
     testBowerPluginError = testUtils.testBowerPluginError,
     testBowerPlugin = testUtils.testBowerPlugin;
@@ -37,7 +37,7 @@ testUtils.describe("searching for components 'resolve.modulesDirectories'", func
       };
 
     cfg.resolve = {
-      modulesDirectories: ["custom_components", "bower_components"]
+      modules: ["custom_components", "bower_components"]
     };
 
     testBowerPlugin(cfg, expectations, done);
@@ -51,7 +51,7 @@ testUtils.describe("searching for components 'resolve.modulesDirectories'", func
       };
 
     cfg.resolve = {
-      modulesDirectories: ["custom_components", "bower_components"]
+      modules: ["custom_components", "bower_components"]
     };
 
     cfg.plugins = [
@@ -71,7 +71,7 @@ testUtils.describe("searching for components 'resolve.modulesDirectories'", func
       };
 
     cfg.resolve = {
-      modulesDirectories: ["custom_components", "bower_components"]
+      modules: ["custom_components", "bower_components"]
     };
 
     cfg.plugins = [
