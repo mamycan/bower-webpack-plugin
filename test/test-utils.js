@@ -121,7 +121,10 @@ exports.testBowerPlugin = function testBowerPlugin(webpackConfig, expectedModule
  * @param {string} entryPoint name of the file, which acts as an entry point
  * @returns {{entry: *, output: {path: *, filename: string}, plugins: *[], debug: boolean}}
  */
-// XXX: searchResolveModulesDirectories is not implementated on this hacky branch
+
+// XXX:
+// * searchResolveModulesDirectories is not really implementated on this hacky branch
+// * quality of this so high that you have to register your plugin in to places currently ;-)
 var bowerWebpackPlugin = new BowerWebpackPlugin({ searchResolveModulesDirectories: false, modulesDirectories: ['./bower_components'] });
 exports.config = function config(entryPoint) {
   return {
