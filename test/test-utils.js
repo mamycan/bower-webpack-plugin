@@ -129,7 +129,6 @@ var bowerWebpackPlugin = new BowerWebpackPlugin({ searchResolveModulesDirectorie
 exports.config = function config(entryPoint) {
   return {
     entry:   path.join(__dirname, "fixtures", entryPoint),
-    devtool: 'eval',
     output:  {
       path:     OUTPUT_DIR,
       filename: 'bundle' + entryPoint
