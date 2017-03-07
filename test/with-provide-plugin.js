@@ -40,12 +40,11 @@ testUtils.describe("integration with provide plugin", function () {
     };
 
     var cfg = config('integration-with-provide');
-    cfg.plugins = [
-      new BowerWebpackPlugin(),
+    cfg.plugins.push(
       new webpack.ProvidePlugin({
         providedA: "module-provided-a"
       })
-    ];
+    );
 
     testBowerPlugin(cfg, expectations, done);
   });
